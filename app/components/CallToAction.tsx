@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function CallToAction() {
   return (
     <div className="flex justify-between items-center px-[300px] py-16 relative text-black">
@@ -18,10 +20,12 @@ export default function CallToAction() {
       </div>
 
       <div className="w-1/3 flex justify-center">
-        <img
-          src="assets/nouvelleaquitaine.svg"
+        <Image
+          src="/assets/nouvelleaquitaine.svg"
           alt="Nouvelle Aquitaine"
-          className="w-[220px] h-[220px]"
+          width={220}
+          height={220}
+          className="object-contain"
         />
       </div>
 

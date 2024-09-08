@@ -68,7 +68,7 @@ export default function Hero({ selectedFlavor }: { selectedFlavor: string }) {
         >
           <Image
             src={currentImage}
-            alt="Delicious Ice Cream"
+            alt="Produit"
             layout="fill"
             objectFit="contain"
           />

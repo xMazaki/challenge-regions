@@ -1,5 +1,6 @@
 import React from "react";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   return (
@@ -42,10 +43,12 @@ const Header: React.FC = () => {
         </nav>
         <div className="flex items-center space-x-4">
           <div className="w-10 h-10 bg-yellow-400 rounded-full overflow-hidden">
-            <img
+            <Image
               src="https://pbs.twimg.com/profile_images/1607353032420769793/I8qQSUfQ_400x400.jpg"
               alt="Profile"
-              className="w-full h-full object-cover"
+              width={400}
+              height={400}
+              className="object-cover w-full h-full"
             />
           </div>
           <button className="text-white text-2xl">
