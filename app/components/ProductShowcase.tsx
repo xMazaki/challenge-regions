@@ -36,7 +36,7 @@ export default function ProductShowcase({
 
       buttons.forEach((button, index) => {
         const offset = index - centerIndex;
-        let x = startX + index * (buttonWidth + buttonSpacing);
+        const x = startX + index * (buttonWidth + buttonSpacing);
         let y = containerHeight / 2;
 
         const curveHeight = 15;
