@@ -66,6 +66,7 @@ export default function ProductShowcase({
   const [selectedIndex, setSelectedIndex] = useState<number>(centerIndex);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleButtons, setVisibleButtons] = useState<number[]>([]);
 
   useEffect(() => {
     setSelectedFlavor(flavors[centerIndex]);
@@ -133,6 +134,22 @@ export default function ProductShowcase({
     selectedIndex,
     isSmallScreen,
   ]);
+
+  useEffect(() => {
+    if (isReady && !isSmallScreen) {
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          setVisibleButtons((prev) => {
+            if (prev.length < flavors.length) {
+              return [...prev, prev.length];
+            }
+            clearInterval(timer);
+            return prev;
+          });
+        }, 250);
+      }, 550);
+    }
+  }, [isReady, isSmallScreen, flavors.length]);
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -222,9 +239,7 @@ export default function ProductShowcase({
             flavors.map((flavor, index) => (
               <button
                 key={index}
-                className={`absolute font-recoleta py-3 w-[150px] text-center rounded-full text-black text-[16px] font-bold whitespace-nowrap border-2 border-brown transition-all duration-300 ease-in-out ${
-                  isReady ? "opacity-100" : "opacity-0"
-                }`}
+                className={`absolute font-recoleta py-3 w-[150px] text-center rounded-full text-black text-[16px] font-bold whitespace-nowrap border-2 border-brown transition-all duration-300 ease-in-out`}
                 style={{
                   backgroundColor: flavor.color,
                   transform: `rotate(${(index - centerIndex) * 0.8}deg) scale(${
@@ -238,6 +253,9 @@ export default function ProductShowcase({
                     selectedIndex === index
                       ? "0 20px 10px rgba(0,0,0,0.2)"
                       : "none",
+                  opacity: visibleButtons.includes(index) ? 1 : 0,
+                  transition:
+                    "opacity 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                 }}
                 onClick={() => {
                   setSelectedFlavor(flavor);
