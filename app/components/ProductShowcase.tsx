@@ -11,6 +11,7 @@ export default function ProductShowcase({
     image: string;
     url: string;
     pronoun: string;
+    asset: string;
   }) => void;
 }) {
   const flavors = [
@@ -20,6 +21,7 @@ export default function ProductShowcase({
       color: "#F4A7B9",
       url: "https://www.avenuedesvins.fr/fr/s-1/couleur-rouge/region-vins_bordeaux",
       pronoun: "du",
+      asset: "assets/vin.png",
     },
     {
       name: "Foie gras",
@@ -27,6 +29,7 @@ export default function ProductShowcase({
       color: "#F9D78F",
       url: "https://www.lafermedufoiegras.com/",
       pronoun: "du",
+      asset: "assets/foie-gras.png",
     },
     {
       name: "Glace vanille",
@@ -34,6 +37,7 @@ export default function ProductShowcase({
       color: "#FFE5A8",
       url: "https://holiscoops.com/",
       pronoun: "de la",
+      asset: "assets/spoon.png",
     },
     {
       name: "Gâteau basque",
@@ -41,6 +45,7 @@ export default function ProductShowcase({
       color: "#FFD27E",
       url: "https://www.maisonadam.fr/fr/11-gateaux-basques",
       pronoun: "du",
+      asset: "assets/basque.png",
     },
     {
       name: "Canelés",
@@ -48,6 +53,7 @@ export default function ProductShowcase({
       color: "#D9A67E",
       url: "https://www.la-toque-cuivree.fr/",
       pronoun: "des",
+      asset: "assets/caneles.png",
     },
   ];
 

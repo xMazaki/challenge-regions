@@ -44,7 +44,7 @@ const Header: React.FC = () => {
               alt="Profile"
               width={400}
               height={400}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full hover:animate-spin"
             />
           </div>
           {isMobile && (
