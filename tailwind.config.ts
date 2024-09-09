@@ -19,6 +19,9 @@ module.exports = {
           500: '#FF1493',
         },
       },
+      fontFamily: {
+        recoleta: ['Recoleta', 'sans-serif'],
+      },
       maxWidth: {
         '1400': '1400px',
       },

@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Recoleta';
+  src: url('/fonts/Recoleta-Black.woff2') format('woff2'),
+       url('/fonts/Recoleta-Black.woff') format('woff'),
+       url('/fonts/Recoleta-Black.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SofiaPro';
+  src: url('/fonts/SofiaPro.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #361a0c;
   --foreground: #ffffff;
@@ -11,8 +29,13 @@
 }
 
 body {
+  font-family: 'SofiaPro', sans-serif;
   color: var(--foreground);
   background: var(--background);
+}
+
+.font-recoleta {
+  font-family: 'Recoleta', sans-serif;
 }
 
 @layer utilities {

@@ -1,46 +1,40 @@
-import React from "react";
-import { Menu } from "lucide-react";
+"use client";
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
+const menuItems = [
+  { href: "https://x.com/mazaki_eth", text: "Mon Twitter" },
+  { href: "https://x.com/benjamincode", text: "Twitter Benjamin Code" },
+  { href: "https://www.lopt.org/", text: "Produits du terroir" },
+];
+
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
-      <header className="py-6 px-[300px] flex justify-between items-center w-full">
-        <div className="text-3xl font-bold text-white">Aquigourmet</div>
-        <nav className="flex-grow">
-          <ul className="flex justify-center space-x-12">
-            <li>
-              <a
-                href="https://x.com/mazaki_eth"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-400"
-              >
-                Mon Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://x.com/benjamincode"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-400"
-              >
-                Twitter Benjamin Code
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.lopt.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-yellow-400"
-              >
-                Produits du terroir
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <header className="py-6 px-4 lg:px-[300px] flex justify-between items-center w-full relative">
+        <div className="text-3xl font-bold text-white font-recoleta">Aquigourmet</div>
+        {!isMobile && (
+          <nav className="flex-grow">
+            <ul className="flex justify-center space-x-12">
+              {menuItems.map((item, index) => (
+                <NavItem key={index} href={item.href} text={item.text} />
+              ))}
+            </ul>
+          </nav>
+        )}
         <div className="flex items-center space-x-4">
           <div className="w-10 h-10 bg-yellow-400 rounded-full overflow-hidden">
             <Image
@@ -51,14 +45,54 @@ const Header: React.FC = () => {
               className="object-cover w-full h-full"
             />
           </div>
-          <button className="text-white text-2xl">
-            <Menu className="w-8 h-8" />
-          </button>
+          {isMobile && (
+            <button className="text-white text-2xl z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            </button>
+          )}
         </div>
       </header>
-      <div className="h-px bg-[#A67C52] w-[calc(100%-580px)] mx-auto"></div>
+      
+      {/* Sidebar Menu */}
+      <div 
+        className={`fixed top-0 left-0 h-full w-64 bg-brown transform transition-transform duration-300 ease-in-out z-40 ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <nav className="pt-20">
+          <ul className="flex flex-col items-start py-4 px-6">
+            {menuItems.map((item, index) => (
+              <NavItem key={index} href={item.href} text={item.text} />
+            ))}
+          </ul>
+        </nav>
+      </div>
+      
+      {/* Overlay */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-30"
+          onClick={() => setIsMenuOpen(false)}
+        ></div>
+      )}
+      
+      <div className="h-px bg-[#523628] w-full lg:w-[calc(100%-580px)] mx-auto"></div>
     </>
   );
 };
+
+const NavItem: React.FC<{ href: string; text: string }> = ({ href, text }) => (
+  <li className="py-2">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-white hover:text-yellow-400 transition-all duration-300 ease-in-out relative group"
+    >
+      {text}
+      <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+    </a>
+  </li>
+);
 
 export default Header;
