@@ -32,6 +32,7 @@ body {
   font-family: "SofiaPro", sans-serif;
   color: var(--foreground);
   background: var(--background);
+  cursor: url('/cursors/cursor.cur'), auto;
 }
 
 .font-recoleta {
@@ -65,4 +66,41 @@ body {
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent);
+}
+
+* {
+  cursor: url('/cursors/cursor.cur'), auto;
+}
+
+
+:is(p, h1, h2, h3, h4, h5, h6, span, a, input, textarea)::selection {
+  cursor: url('/cursors/select.cur'), text;
+}
+
+:is(p, h1, h2, h3, h4, h5, h6, span, a, input, textarea) {
+  cursor: url('/cursors/select.cur'), text;
+}
+
+button, 
+[role="button"], 
+a[href], 
+input[type="submit"], 
+input[type="image"], 
+input[type="button"], 
+label[for], 
+select, 
+summary {
+  cursor: url('/cursors/cursor.cur'), pointer;
+}
+
+button:active, 
+[role="button"]:active, 
+a[href]:active, 
+input[type="submit"]:active, 
+input[type="image"]:active, 
+input[type="button"]:active, 
+label[for]:active, 
+select:active, 
+summary:active {
+  cursor: url('/cursors/cursor_click.cur'), pointer;
 }

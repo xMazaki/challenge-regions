@@ -12,6 +12,7 @@ const menuItems = [
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [logoInView, setLogoInView] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,12 +23,25 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLogoInView(true);
+    }, 500);
+  }, []);
+
   return (
     <>
       <header className="py-6 px-4 lg:px-[300px] flex justify-between items-center w-full relative">
-        <div className="text-3xl font-bold text-white font-recoleta">
+        <div
+          className={`text-3xl font-bold text-white font-recoleta transform transition-transform duration-700 ease-in-out ${
+            logoInView
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-[-20px] opacity-0 scale-95"
+          } hover:scale-105`}
+        >
           Aquigourmet
         </div>
+
         {!isMobile && (
           <nav className="flex-grow">
             <ul className="flex justify-center space-x-12">
@@ -38,13 +52,13 @@ const Header: React.FC = () => {
           </nav>
         )}
         <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 bg-yellow-400 rounded-full overflow-hidden">
+          <div className="w-10 h-10 bg-yellow-400 rounded-full overflow-hidden transition-transform duration-300 ease-in-out hover:scale-110">
             <Image
               src="https://pbs.twimg.com/profile_images/1607353032420769793/I8qQSUfQ_400x400.jpg"
               alt="Profile"
               width={400}
               height={400}
-              className="object-cover w-full h-full hover:animate-spin"
+              className="object-cover w-full h-full transition-transform duration-700 ease-in-out hover:rotate-[360deg]"
             />
           </div>
           {isMobile && (
