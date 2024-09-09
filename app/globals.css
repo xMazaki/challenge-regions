@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Recoleta';
-  src: url('/fonts/Recoleta-Black.woff2') format('woff2'),
-       url('/fonts/Recoleta-Black.woff') format('woff'),
-       url('/fonts/Recoleta-Black.ttf') format('truetype');
+  font-family: "Recoleta";
+  src: url("/fonts/Recoleta-Black.woff2") format("woff2"),
+    url("/fonts/Recoleta-Black.woff") format("woff"),
+    url("/fonts/Recoleta-Black.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SofiaPro';
-  src: url('/fonts/SofiaPro.ttf') format('truetype');
+  font-family: "SofiaPro";
+  src: url("/fonts/SofiaPro.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -23,19 +23,19 @@
 :root {
   --background: #361a0c;
   --foreground: #ffffff;
-  --primary: #FFD700;
-  --secondary: #A67C52;
-  --accent: #FF1493;
+  --primary: #ffd700;
+  --secondary: #a67c52;
+  --accent: #ff1493;
 }
 
 body {
-  font-family: 'SofiaPro', sans-serif;
+  font-family: "SofiaPro", sans-serif;
   color: var(--foreground);
   background: var(--background);
 }
 
 .font-recoleta {
-  font-family: 'Recoleta', sans-serif;
+  font-family: "Recoleta", sans-serif;
 }
 
 @layer utilities {
@@ -59,7 +59,7 @@ body {
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--primary);
-  border-radius: 10px; 
+  border-radius: 10px;
   border: 2px solid var(--background);
 }
 
