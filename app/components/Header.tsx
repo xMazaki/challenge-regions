@@ -25,7 +25,9 @@ const Header: React.FC = () => {
   return (
     <>
       <header className="py-6 px-4 lg:px-[300px] flex justify-between items-center w-full relative">
-        <div className="text-3xl font-bold text-white font-recoleta">Aquigourmet</div>
+        <div className="text-3xl font-bold text-white font-recoleta">
+          Aquigourmet
+        </div>
         {!isMobile && (
           <nav className="flex-grow">
             <ul className="flex justify-center space-x-12">
@@ -46,17 +48,23 @@ const Header: React.FC = () => {
             />
           </div>
           {isMobile && (
-            <button className="text-white text-2xl z-50" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+            <button
+              className="text-white text-2xl z-50"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="w-8 h-8" />
+              ) : (
+                <Menu className="w-8 h-8" />
+              )}
             </button>
           )}
         </div>
       </header>
-      
-      {/* Sidebar Menu */}
-      <div 
+
+      <div
         className={`fixed top-0 left-0 h-full w-64 bg-brown transform transition-transform duration-300 ease-in-out z-40 ${
-          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <nav className="pt-20">
@@ -67,15 +75,14 @@ const Header: React.FC = () => {
           </ul>
         </nav>
       </div>
-      
-      {/* Overlay */}
+
       {isMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30"
           onClick={() => setIsMenuOpen(false)}
         ></div>
       )}
-      
+
       <div className="h-px bg-[#523628] w-full lg:w-[calc(100%-580px)] mx-auto"></div>
     </>
   );

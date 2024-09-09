@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Footer() {
   return (
@@ -10,9 +10,9 @@ export default function Footer() {
             ❤️
           </span>{" "}
           by{" "}
-          <a 
-            href="https://x.com/mazaki_eth" 
-            target="_blank" 
+          <a
+            href="https://x.com/mazaki_eth"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-yellow-300 hover:text-yellow-100 transition-colors duration-200 underline decoration-dotted underline-offset-4"
           >

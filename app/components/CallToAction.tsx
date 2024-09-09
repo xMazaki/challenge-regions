@@ -11,7 +11,11 @@ export default function CallToAction() {
         <p className="text-base lg:text-lg mb-8 font-bold">
           Une région riche en saveurs et en traditions culinaires.
         </p>
-        <a href="https://www.lopt.org/carte" target="_blank" className="inline-block">
+        <a
+          href="https://www.lopt.org/carte"
+          target="_blank"
+          className="inline-block"
+        >
           <button className="bg-pink-500 text-white px-4 lg:px-6 py-2 lg:py-3 rounded-full border-black flex items-center transform transition-transform duration-300 hover:scale-105 hover:bg-pink-600">
             Explorez nos spécialités
             <span className="ml-2 text-xl animate-pulse">🍴</span>
@@ -31,7 +35,8 @@ export default function CallToAction() {
 
       <div className="w-full lg:w-1/3 text-center">
         <h2 className="text-xl lg:text-2xl font-recoleta mb-4">
-          Des produits uniques: vins, foie gras, canelés... une richesse à découvrir.
+          Des produits uniques: vins, foie gras, canelés... une richesse à
+          découvrir.
         </h2>
       </div>
     </div>

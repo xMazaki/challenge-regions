@@ -10,7 +10,7 @@ export default function Home() {
     name: "Glace vanille",
     image: "vanilla-scoops.png",
     url: "https://holiscoops.com/",
-    pronoun: "de la"
+    pronoun: "de la",
   });
 
   return (

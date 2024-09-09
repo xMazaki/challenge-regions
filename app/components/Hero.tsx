@@ -36,7 +36,9 @@ export default function Hero({ selectedFlavor }: { selectedFlavor: Flavor }) {
 
   const getButtonText = () => {
     if (selectedFlavor && selectedFlavor.pronoun && selectedFlavor.name) {
-      return `Acheter ${selectedFlavor.pronoun} ${selectedFlavor.name.toLowerCase()}`;
+      return `Acheter ${
+        selectedFlavor.pronoun
+      } ${selectedFlavor.name.toLowerCase()}`;
     }
     return "Acheter";
   };
@@ -50,9 +52,12 @@ export default function Hero({ selectedFlavor }: { selectedFlavor: Flavor }) {
             : "-translate-x-full opacity-0"
         }`}
       >
-        <h1 className="text-4xl lg:text-8xl font-bold mb-6 font-recoleta">Les produits de Nouvelle-Aquitaine</h1>
+        <h1 className="text-4xl lg:text-8xl font-bold mb-6 font-recoleta">
+          Les produits de Nouvelle-Aquitaine
+        </h1>
         <p className="text-base lg:text-lg mb-8">
-          Découvrez l'authenticité et les saveurs uniques du terroir de Nouvelle-Aquitaine.
+          Découvrez l'authenticité et les saveurs uniques du terroir de
+          Nouvelle-Aquitaine.
         </p>
 
         {selectedFlavor && (

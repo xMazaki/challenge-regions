@@ -6,14 +6,49 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function ProductShowcase({
   setSelectedFlavor,
 }: {
-  setSelectedFlavor: (flavor: { name: string; image: string; url: string; pronoun: string }) => void;
+  setSelectedFlavor: (flavor: {
+    name: string;
+    image: string;
+    url: string;
+    pronoun: string;
+  }) => void;
 }) {
   const flavors = [
-    { name: "Vin", image: "vin.png", color: "#F4A7B9", url: "https://www.avenuedesvins.fr/fr/s-1/couleur-rouge/region-vins_bordeaux", pronoun: "du" },
-    { name: "Foie gras", image: "foie-gras.webp", color: "#F9D78F", url: "https://www.lafermedufoiegras.com/", pronoun: "du" },
-    { name: "Glace vanille", image: "vanilla-scoops.png", color: "#FFE5A8", url: "https://holiscoops.com/", pronoun: "de la" },
-    { name: "Gâteau basque", image: "gateau-basque.png", color: "#FFD27E", url: "https://www.maisonadam.fr/fr/11-gateaux-basques", pronoun: "du" },
-    { name: "Canelés", image: "caneles.png", color: "#D9A67E", url: "https://www.la-toque-cuivree.fr/", pronoun: "des" },
+    {
+      name: "Vin",
+      image: "vin.png",
+      color: "#F4A7B9",
+      url: "https://www.avenuedesvins.fr/fr/s-1/couleur-rouge/region-vins_bordeaux",
+      pronoun: "du",
+    },
+    {
+      name: "Foie gras",
+      image: "foie-gras.webp",
+      color: "#F9D78F",
+      url: "https://www.lafermedufoiegras.com/",
+      pronoun: "du",
+    },
+    {
+      name: "Glace vanille",
+      image: "vanilla-scoops.png",
+      color: "#FFE5A8",
+      url: "https://holiscoops.com/",
+      pronoun: "de la",
+    },
+    {
+      name: "Gâteau basque",
+      image: "gateau-basque.png",
+      color: "#FFD27E",
+      url: "https://www.maisonadam.fr/fr/11-gateaux-basques",
+      pronoun: "du",
+    },
+    {
+      name: "Canelés",
+      image: "caneles.png",
+      color: "#D9A67E",
+      url: "https://www.la-toque-cuivree.fr/",
+      pronoun: "des",
+    },
   ];
 
   const centerIndex = Math.floor(flavors.length / 2);
@@ -36,9 +71,9 @@ export default function ProductShowcase({
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -70,7 +105,8 @@ export default function ProductShowcase({
         (button as HTMLElement).style.top = `${y}px`;
 
         const rotationAngle = offset * 2.0;
-        const scale = hoveredIndex === index ? 1.15 : selectedIndex === index ? 1.15 : 1;
+        const scale =
+          hoveredIndex === index ? 1.15 : selectedIndex === index ? 1.15 : 1;
         (
           button as HTMLElement
         ).style.transform = `rotate(${rotationAngle}deg) scale(${scale})`;
@@ -83,7 +119,14 @@ export default function ProductShowcase({
     window.addEventListener("resize", positionButtons);
 
     return () => window.removeEventListener("resize", positionButtons);
-  }, [centerIndex, buttonSpacing, flavors.length, hoveredIndex, selectedIndex, isSmallScreen]);
+  }, [
+    centerIndex,
+    buttonSpacing,
+    flavors.length,
+    hoveredIndex,
+    selectedIndex,
+    isSmallScreen,
+  ]);
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -105,7 +148,7 @@ export default function ProductShowcase({
       const scrollPosition = index * (buttonWidth + 8);
       scrollContainerRef.current.scrollTo({
         left: scrollPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -121,20 +164,28 @@ export default function ProductShowcase({
         <CallToAction />
       </div>
 
-      <div className={`absolute inset-x-0 ${isSmallScreen ? 'top-0' : 'top-12 transform translate-y-[30%]'} z-20`}>
+      <div
+        className={`absolute inset-x-0 ${
+          isSmallScreen ? "top-0" : "top-12 transform translate-y-[30%]"
+        } z-20`}
+      >
         <div ref={containerRef} className="relative w-full">
           {isSmallScreen ? (
             <div className="flex items-center justify-center">
-              <button onClick={handlePrev} className="p-2 mr-2" disabled={currentIndex === 0}>
+              <button
+                onClick={handlePrev}
+                className="p-2 mr-2"
+                disabled={currentIndex === 0}
+              >
                 <ChevronLeft size={24} />
               </button>
-              <div 
+              <div
                 ref={scrollContainerRef}
                 className="flex overflow-x-auto scrollbar-hide"
                 style={{
-                  scrollbarWidth: 'none',
-                  msOverflowStyle: 'none',
-                  WebkitOverflowScrolling: 'touch',
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  WebkitOverflowScrolling: "touch",
                 }}
               >
                 {flavors.map((flavor, index) => (
@@ -153,7 +204,11 @@ export default function ProductShowcase({
                   </button>
                 ))}
               </div>
-              <button onClick={handleNext} className="p-2 ml-2" disabled={currentIndex >= flavors.length - 3}>
+              <button
+                onClick={handleNext}
+                className="p-2 ml-2"
+                disabled={currentIndex >= flavors.length - 3}
+              >
                 <ChevronRight size={24} />
               </button>
             </div>
@@ -167,9 +222,16 @@ export default function ProductShowcase({
                 style={{
                   backgroundColor: flavor.color,
                   transform: `rotate(${(index - centerIndex) * 0.8}deg) scale(${
-                    hoveredIndex === index ? 1.15 : selectedIndex === index ? 1.15 : 1
+                    hoveredIndex === index
+                      ? 1.15
+                      : selectedIndex === index
+                      ? 1.15
+                      : 1
                   })`,
-                  boxShadow: selectedIndex === index ? '0 20px 10px rgba(0,0,0,0.2)' : 'none',
+                  boxShadow:
+                    selectedIndex === index
+                      ? "0 20px 10px rgba(0,0,0,0.2)"
+                      : "none",
                 }}
                 onClick={() => {
                   setSelectedFlavor(flavor);
