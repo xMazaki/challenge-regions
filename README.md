@@ -8,6 +8,13 @@
 
 Ce projet est ma réalisation pour le challenge de Benjamin Code.
 
+## Fonctionnalités
+
+- Animations d'intro au chargement de la page
+- Animations d'hover sur plusieurs élements
+- Animation onclick sur les asset (cuillère, etc...)
+- Responsive (non priorisé)
+
 🌐 **Démo en ligne :** [https://aquigourmet.pages.dev/](https://aquigourmet.pages.dev/)
 
 ## Installation et lancement
