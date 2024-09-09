@@ -15,7 +15,6 @@ export default function Hero({ selectedFlavor }: { selectedFlavor: Flavor }) {
   const [isFading, setIsFading] = useState(true);
   const [textInView, setTextInView] = useState(false);
   const [imageInView, setImageInView] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const [currentAsset, setCurrentAsset] = useState(selectedFlavor?.asset);
   const [isAssetFading, setIsAssetFading] = useState(true);
   const [isAssetMoved, setIsAssetMoved] = useState(false);
@@ -108,8 +107,6 @@ export default function Hero({ selectedFlavor }: { selectedFlavor: Flavor }) {
     ${imageInView ? "translate-x-0" : "translate-x-full"} 
     ${isFading ? "opacity-0 scale-95" : "opacity-100 scale-100"}
     group`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
           >
             <Image
               src={currentImage}

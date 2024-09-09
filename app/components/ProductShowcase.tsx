@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CallToAction from "./CallToAction";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -68,9 +68,16 @@ export default function ProductShowcase({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleButtons, setVisibleButtons] = useState<number[]>([]);
 
+  const flavorsRef = useRef(flavors);
+  const centerIndexRef = useRef(centerIndex);
+
+  const memoizedSetSelectedFlavor = useCallback(() => {
+    setSelectedFlavor(flavorsRef.current[centerIndexRef.current]);
+  }, [setSelectedFlavor]);
+
   useEffect(() => {
-    setSelectedFlavor(flavors[centerIndex]);
-  }, []);
+    memoizedSetSelectedFlavor();
+  }, [memoizedSetSelectedFlavor]);
 
   useEffect(() => {
     const handleResize = () => {
